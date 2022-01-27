@@ -116,6 +116,8 @@ public class CourseMain {
         return  n <= 1 ? 1: n * getFactorial(n-1);
     }
 
+
+
     private static List<Integer> getFactorialForEach(List<Integer> numbers){
        return numbers.stream()
                .map(CourseMain::getFactorial)

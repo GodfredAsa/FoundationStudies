@@ -8,7 +8,7 @@ public class FB05Paralleling {
         long time = System.currentTimeMillis();
 
         System.out.println(LongStream.range(0, 1000_000_000)
-                .parallel()
+                .parallel() // paralleling program improves the optimization and run time
                 .sum());
 
         System.out.print("time taken to run: ");
