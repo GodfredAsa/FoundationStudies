@@ -31,7 +31,7 @@ public class FB01Functional {
                 sumAllNumbers(List.of(12,9,13,4,6,2,4,12,15)));
 
         System.out.println("Sum of Square of distinct Numbers: "
-                + sumSquareOfDistincNumbers(List.of(12,9,13,4,6,2,4,12,15)));
+                + sumSquareOfDistinctNumbers(List.of(12,9,13,4,6,2,4,12,15)));
     }
 
     private static void printAllNumbersInListFunctional(List<Integer> numbers) {
@@ -75,7 +75,7 @@ public class FB01Functional {
                 .collect(toList());
     }
 
-    public static int sumSquareOfDistincNumbers(List<Integer> numbers){
+    public static int sumSquareOfDistinctNumbers(List<Integer> numbers){
         return numbers.stream()
                 .distinct()
                 .map(square -> Math.pow(2, square))

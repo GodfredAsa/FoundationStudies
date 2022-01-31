@@ -1,5 +1,6 @@
 package com.company.FunctionalProgramming.Exercise;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
@@ -10,14 +11,13 @@ import java.util.stream.Collectors;
 public class BehaviourParameterizationTrial {
 
     public static void main(String[] args) {
+
         List<Integer> numbers = List.of(12, 9, 13, 4, 6, 2, 4, 12, 15);
-
-
         List<Integer> squared = createSquaredList(numbers, mapFunction());
-
+        List<Integer> doubledNumbers = createSquaredList(numbers, x-> x * 2);
         List<Integer> cubedNumbers = createSquaredList(numbers, number -> number * number * number);
 
-        List<Integer> doubledNumbers = createSquaredList(numbers, x-> x * 2);
+
 
         System.out.println("numbers: " + numbers);
         System.out.println("doubled numbers: " + doubledNumbers);
@@ -25,16 +25,14 @@ public class BehaviourParameterizationTrial {
         System.out.println("cubed numbers: " + cubedNumbers);
 
 // takes no input but returns an out mostly used in creating an object
-        Supplier<String> getRandomNumberReturnString = () -> {
+//        this function returns even or odd if the random number generated is even / odd
+        Supplier<String> isEvenOrOddRandomGenerated = () -> {
             Random random = new Random();
             int result = random.nextInt(100);
-            if(result %2 ==0)
-               return "random Number is even";
-            else
-               return "random Number is odd";
+            return result % 2 == 0  ? "even number: " + result : "odd number: " + result;
         };
 
-        System.out.println(getRandomNumberReturnString.get());
+        System.out.println(isEvenOrOddRandomGenerated.get());
 
 
 
@@ -44,6 +42,8 @@ public class BehaviourParameterizationTrial {
     {
         return numbers.stream()
                 .map(mappingFunction)
+                .sorted(Comparator.comparingInt(Integer::intValue))
+                .distinct()
                 .collect(Collectors.toList());
     }
 

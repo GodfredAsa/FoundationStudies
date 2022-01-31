@@ -26,17 +26,16 @@ public class HigherOrderFunction {
 
 
         Function<Integer, Integer> factorial = HigherOrderFunction::getFactorial;
-
-
-
+        
         System.out.println("Factorial Functional: " + factorial.apply(10));
 
 
 // finds first course name with length greater than 11
-    Optional<String> courseLengthGreaterThan11  = getCourses().stream()
-             .filter(course -> course.getName().length() > 11)
-             .map(nameUpperCase -> nameUpperCase.getName().toUpperCase())
-             .findFirst();
+    Optional<String> courseLengthGreaterThan11  = getCourses()
+            .stream()
+            .filter(course -> course.getName().length() > 11)
+            .map(nameUpperCase -> nameUpperCase.getName().toUpperCase())
+            .findFirst();
 
         System.out.println(courseLengthGreaterThan11);
 
@@ -44,19 +43,23 @@ public class HigherOrderFunction {
 
         String str = "I can see the sun shines on my handsome and beautiful face";
         String[] newStr = str.split(" ");
-
         String generatedString = Arrays.stream(newStr)
                 .map( word -> word.substring(0,1).toUpperCase() + word.substring(1))
                 .collect(Collectors.joining(" "));
 
         System.out.println(generatedString);
 
+        System.out.println("functional HOF: " + functionalHOF().apply(new Course("Spring", "Framework", 90, 20_000)));
+
     }
 
     private static int getFactorial(int i) {
-        return i<= 1 ? 1: i * getFactorial(i -1);
+        return i <= 1 ? 1: i * getFactorial(i -1);
     }
 
+    private static Function<Course, Integer> functionalHOF(){
+        return Course::getReviewScore;
+    }
 
     //     Higher Order Function Demo : a function that returns another function
     private static Predicate<Course> createPredicateWithCutoffReviewScore(int cutoffReviewScore) {
