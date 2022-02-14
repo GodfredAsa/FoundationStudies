@@ -8,6 +8,7 @@ public class Nurse extends Employee{
 
     @Override
     public void performDuties() {
+
         checkVitalSigns();
         drawBlood();
         cleanPatientArea();

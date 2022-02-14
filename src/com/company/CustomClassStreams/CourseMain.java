@@ -1,6 +1,10 @@
 package com.company.CustomClassStreams;
 
 
+
+
+
+
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -9,6 +13,30 @@ import java.util.stream.Collectors;
 
 public class CourseMain {
     public static void main(String[] args) {
+
+        int[] n =  {3,2,4};
+
+        System.out.println(Arrays.toString(twoSum(n, 6)));
+
+        int[] nt =  {3,3};
+        System.out.println(Arrays.toString(twoSum(nt, 6)));
+
+
+        System.out.println(orderWeight("2000 103 123 4444 99"));
+
+
+
+
+
+        System.out.println(groupCoursesByCategoryAndSumOfReviewScore(getCourses()));
+
+
+        for(Map.Entry<String, Integer> entry : groupCoursesByCategoryAndSumOfReviewScore(getCourses()).entrySet()){
+            System.out.println(entry);
+        }
+
+        System.out.println("\n");
+
 
 
         System.out.println( "factorial of 5: " + getFactorial(5));
@@ -21,22 +49,21 @@ public class CourseMain {
 
         System.out.println(
                 courses1.stream()
-                        .flatMap( course -> courses2.stream().map( course2 -> List.of(course, course2)))
-                        .filter( list -> !list.get(0).equals(list.get(1)))
-                        .collect(Collectors.toList())
+                        .flatMap(course -> courses2.stream().map(course2 -> List.of(course, course2)))
+                        .filter(list -> !list.get(0).equals(list.get(1))).toList()
         );
 
 
 //      FILTERING BASED ON LENGTH
-        System.out.println(
+//        System.out.println( "----- this -----" +
                 courses1.stream()
                         .flatMap( course -> courses2
                                 .stream()
                                 .filter( course2 -> course2.length() == course.length()  )
                                 .map( course2 -> List.of(course, course2)))
                         .filter(list -> !list.get(0).equals(list.get(1)))
-                        .collect(Collectors.toList())
-        );
+                        .forEach(System.out::println);
+//                        .collect(Collectors.toList())
 
 
 
@@ -89,10 +116,10 @@ public class CourseMain {
 
         System.out.println("Average Number of Students With Review < 95: " + getAverageOfStudentsWithReviewScoreLessThan95(getCourses()));
 
-
+        System.out.println(" \n grouped by category  ");
 
         Map<String, List<Course>> coursesGroupedByCategory = groupCoursesByCategory(getCourses());
-        for (Map.Entry<String, List<Course>> entry : coursesGroupedByCategory.entrySet()) {
+        for(Map.Entry<String, List<Course>> entry : coursesGroupedByCategory.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
@@ -106,6 +133,9 @@ public class CourseMain {
 
         System.out.println("-------------  something new just done today -------------------");
         System.out.println(groupCoursesByCategoryAndMapByNameToList(getCourses()));
+
+
+
 
 
 
@@ -133,6 +163,22 @@ public class CourseMain {
                        Collectors.mapping(Course::getName, Collectors.toList()))
                );
     }
+
+
+    // grouping courses by category and reviewScore
+    private static Map<String, Integer> groupCoursesByCategoryAndSumOfReviewScore(List<Course> courses){
+        return courses.
+                stream()
+                .filter(course -> course.getReviewScore() > 96)
+                .sorted(Comparator.comparingInt(Course::getReviewScore).reversed())
+                .collect(Collectors.groupingBy(Course::getCategory,
+                        Collectors.mapping(Course::getReviewScore, Collectors.reducing(0, Integer::sum)))
+                );
+    }
+
+
+
+
 
 
 
@@ -291,6 +337,36 @@ public class CourseMain {
                 .thenComparingInt(Course::getNoOfStudents)
                 .reversed();
     }
+
+
+    public static int[] twoSum(int[] nums, int target) {
+
+        int[] job = new int[2];
+
+
+        for(int i=0; i< nums.length; i++){
+            for(int j=i+1; j < nums.length; j++)
+                if( nums[i] + nums[j] == target) {
+                    job[0] =  i;
+                    job[1] = j ;
+                }
+        }
+       return job;
+    }
+
+
+    public static String orderWeight(String str) {
+
+      return Arrays.stream(str.split(" "))
+                .map(Integer::parseInt)
+                .sorted(Comparator.comparingInt(Integer::intValue))
+                .collect(Collectors.toList())
+                .toString();
+    }
+
+
+
+
 
 
 

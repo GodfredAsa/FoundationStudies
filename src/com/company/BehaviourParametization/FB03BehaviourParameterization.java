@@ -1,6 +1,9 @@
 package com.company.BehaviourParametization;
 
+
+
 import java.util.List;
+
 import java.util.Random;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -13,11 +16,17 @@ public class FB03BehaviourParameterization {
     public static void main(String[] args) {
         List<Integer> numbers = List.of(12,9,13,4,6,2,4,12,15);
 
+        System.out.println( "my Best" + myBet(List.of(12,9,13,4,6,2,4,12,15, 10), (x) -> x , y -> y > 9 ));
+
+
+
+
+        System.out.println(newTeller(numbers, (number) -> 2 * number));
 
         filterAndPrint(numbers, x -> x % 3 == 0);
         System.out.println("--------------------");
         filterAndPrint(numbers, x -> x % 4 == 0);
-        
+
 
         System.out.println( "real numbers: " + numbers);
 
@@ -26,8 +35,8 @@ public class FB03BehaviourParameterization {
         System.out.println( "double numbers: " + doubledNumbers);
 
 
-        List<Integer> squaredNumbers = mapAndCreateNewList(numbers, mappingFunction);
-        System.out.println( "squared numbers: " + squaredNumbers);
+        List<Integer> squaredNumbers = mapAndCreateNewList(numbers, (x) -> x * x);
+        System.out.print( "squared numbers: " + squaredNumbers);
 
 
         List<Integer> cubesOfNumbers = mapAndCreateNewList(numbers, x-> x*x*x);
@@ -54,6 +63,7 @@ public class FB03BehaviourParameterization {
     }
 
 
+
     private static List<Integer> createListTest(List<Integer> testNumbers, Function<Integer, Integer> testFunc){
         return testNumbers.stream()
                 .map(testFunc)
@@ -62,7 +72,6 @@ public class FB03BehaviourParameterization {
 
 
 
-    private static final Function<Integer, Integer> mappingFunction  = x -> x * x;
     private static List<Integer> mapAndCreateNewList(List<Integer> numbers, Function<Integer, Integer> mappingFunction) {
         return numbers.stream()
                 .map(mappingFunction)
@@ -85,6 +94,26 @@ public class FB03BehaviourParameterization {
                 .forEach(System.out::println);
     }
 
+
+    public static List<Integer> newTeller(List<Integer> numbers, Function<Integer, Integer> myFunc){
+      return   numbers.stream()
+              .filter( number ->  number% 2 == 0 )
+              .map(myFunc)
+              .collect(Collectors.toList());
+    }
+
+
+
+
+    public static List<Integer> myBet(List<Integer> listsOfNumbers, Function<Integer, Integer> function, Predicate<Integer> predicate){
+
+        return listsOfNumbers // list of numbers
+                .stream()
+                .filter(predicate) // predicate here
+                .map(function) // function here
+                .collect(Collectors.toList());
+
+    }
 
 
 

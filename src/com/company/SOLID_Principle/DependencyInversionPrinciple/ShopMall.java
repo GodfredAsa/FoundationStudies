@@ -19,7 +19,7 @@ public class ShopMall {
     }
 
     public static void main(String[] args) {
-//        this process is violates the dependency inversion principle
+//        this process violates the dependency inversion principle
 //        as when there is something wrong with the card you need to make
 //        a bunch of code changes at many places or lines.
 

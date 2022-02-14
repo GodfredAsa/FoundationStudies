@@ -1,24 +1,54 @@
 package com.company;
 
-import java.util.Comparator;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Comparator<String> comparator = String::compareTo;
 
 
-        Comparator<String> comparatorReversed = comparator.reversed();
-
-
-        List<String> list = new java.util.ArrayList<>(List.of("one", "two", "three"));
-
-        list.sort(comparatorReversed);
-
-        System.out.println(list);
 
 
     }
+
+//
+//
+//    private static String barGraph(int n){
+//        StringBuilder sbf = new StringBuilder();
+//        for(int i = 0; i<n; i++){
+//            for(int j = i; j < n; j++){
+//                       sbf.append("#".repeat(n-j));
+//            }
+//            sbf.append("\n");
+//        }
+//
+//        return sbf.toString();
+//
+//
+//    }
+
+
+
+//
+//    private static void getFactors(int number){
+//        List<Integer> factors = new ArrayList<>();
+//
+//        for(int i=1; i <= number; i++){
+//            if(number <= 1) System.out.println("invalid input");
+//            if(number% i==0) factors.add(i);
+//        }
+//        System.out.println("factors of: " + number +  " => " + factors);
+//       if(factors.toArray().length < 2)
+//           System.out.println("invalid input");
+//
+//       else if( factors.toArray().length > 3){
+//           System.out.println(number + " not a prime number ");
+//       }
+//       else System.out.println(number + " is a prime number");
+//    }
+
+
 }

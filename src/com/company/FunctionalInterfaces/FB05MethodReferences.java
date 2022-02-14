@@ -2,6 +2,7 @@ package com.company.FunctionalInterfaces;
 
 
 import java.util.ArrayList;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Supplier;
@@ -46,7 +47,11 @@ public class FB05MethodReferences {
                 .sorted(Comparator.comparing(String::length))
                 .forEach(System.out::println);
 
+
+
     }
+
+
 
 
 

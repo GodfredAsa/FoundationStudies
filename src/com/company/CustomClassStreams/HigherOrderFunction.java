@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -12,8 +13,42 @@ import java.util.stream.Collectors;
 public class HigherOrderFunction {
     public static void main(String[] args) {
 
+        int[] arr = {1,2,3,4};
+
+
+        System.out.println(specialFunction(arr, (a,b) -> a * b , 10));
+        System.out.println(specialFunction(arr, Integer::sum, 1));
+
+
+
+
+//        Functional Composition
+
+        Predicate<String> startsWithA = (text) -> text.startsWith("A");
+        Predicate<String> endsWithX = (text) -> text.endsWith("x");
+        Predicate<String> composed = startsWithA.and(endsWithX);
+
+        String statement = "A hardworking person must relax";
+        System.out.println(composed.test(statement));
+
+        Function<Integer, Integer> addTwo = (value) -> value + 2 ;
+        Function<Integer, Integer> multiplyByTen = value -> value * 10;
+
+        Function<Integer, Integer>  addTwoAndMultiplyByTen = addTwo
+                                                                .andThen(multiplyByTen)
+                                                                .andThen(addTwo);
+
+        System.out.println(addTwoAndMultiplyByTen.apply(2));
+
+        System.out.println("-----------------------------------------------------------");
+
+
+
+
+
 
         //        Using the HOF
+
         Predicate<Course> reviewScoreGreaterThan95 = createPredicateWithCutoffReviewScore(95);
         Predicate<Course> reviewScoreGreaterThan90 = createPredicateWithCutoffReviewScore(90);
 
@@ -49,7 +84,16 @@ public class HigherOrderFunction {
 
         System.out.println(generatedString);
 
-        System.out.println("functional HOF: " + functionalHOF().apply(new Course("Spring", "Framework", 90, 20_000)));
+        System.out.println("functional HOF: " + functionalHOF()
+                .apply(new Course("Spring", "Framework", 90, 20_000)));
+
+    }
+
+    private static int specialFunction(int[] intArray, IntBinaryOperator func, int initialCounter){
+
+        return Arrays.stream(intArray)
+                .reduce(initialCounter, func);
+
 
     }
 

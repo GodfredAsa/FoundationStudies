@@ -1,11 +1,15 @@
 package com.company.FunctionalProgramming.Exercise;
 
+
 import java.util.Comparator;
 import java.util.List;
+
 
 public class Courses {
 
     public static void main(String[] args) {
+
+
 
 
 
@@ -59,6 +63,11 @@ public class Courses {
     public static void printString(String course){
         System.out.println(course);
     }
+
+
+
+
+
 
 }
 

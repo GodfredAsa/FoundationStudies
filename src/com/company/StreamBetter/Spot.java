@@ -25,8 +25,9 @@ public class Spot {
 
 
         miners.stream()
-                .filter(worthGreaterThan5-> worthGreaterThan5.getJewelleries()
-                        .stream().anyMatch(worth->worth.getWorth()>5))
+                .filter(miner-> miner.getJewelleries()
+                        .stream().anyMatch(jewelleryWorth->jewelleryWorth.getWorth()>5))
+                .map(name -> name.getName() + " " + name.getPlace()  + " " + name.getJewelleries())
 
                 .forEach(System.out::println);
 
