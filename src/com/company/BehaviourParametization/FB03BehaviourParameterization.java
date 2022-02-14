@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 // this work space demonstrate behavior parameterization
 public class FB03BehaviourParameterization {
 
+
     public static void main(String[] args) {
         List<Integer> numbers = List.of(12,9,13,4,6,2,4,12,15);
 
