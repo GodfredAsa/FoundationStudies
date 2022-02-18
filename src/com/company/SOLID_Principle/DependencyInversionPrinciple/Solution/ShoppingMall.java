@@ -28,8 +28,6 @@ public class ShoppingMall {
         ShoppingMall shoppingMall1 = new ShoppingMall(debitCard);
 
         shoppingMall1.doPurchaseSomething(7000);
-
-
     }
 
 

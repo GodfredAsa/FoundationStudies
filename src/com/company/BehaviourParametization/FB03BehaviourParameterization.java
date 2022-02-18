@@ -2,6 +2,7 @@ package com.company.BehaviourParametization;
 
 
 
+import java.util.Arrays;
 import java.util.List;
 
 import java.util.Random;
@@ -15,11 +16,9 @@ public class FB03BehaviourParameterization {
 
 
     public static void main(String[] args) {
-        List<Integer> numbers = List.of(12,9,13,4,6,2,4,12,15);
+        List<Integer> numbers = Arrays.asList(12,9,13,4,6,2,4,12,15, 10);
 
-        System.out.println( "my Best" + myBet(List.of(12,9,13,4,6,2,4,12,15, 10), (x) -> x , y -> y > 9 ));
-
-
+        System.out.println("my Best" + myBet(numbers, (x) -> x , y -> y > 9 ));
 
 
         System.out.println(newTeller(numbers, (number) -> 2 * number));
@@ -29,11 +28,11 @@ public class FB03BehaviourParameterization {
         filterAndPrint(numbers, x -> x % 4 == 0);
 
 
-        System.out.println( "real numbers: " + numbers);
+        System.out.println("real numbers: " + numbers);
 
 
         List<Integer> doubledNumbers = mapAndCreateNewList(numbers, x-> x*2);
-        System.out.println( "double numbers: " + doubledNumbers);
+        System.out.println("double numbers: " + doubledNumbers);
 
 
         List<Integer> squaredNumbers = mapAndCreateNewList(numbers, (x) -> x * x);
@@ -66,7 +65,8 @@ public class FB03BehaviourParameterization {
 
 
     private static List<Integer> createListTest(List<Integer> testNumbers, Function<Integer, Integer> testFunc){
-        return testNumbers.stream()
+        return testNumbers
+                .stream()
                 .map(testFunc)
                 .collect(Collectors.toList());
     }

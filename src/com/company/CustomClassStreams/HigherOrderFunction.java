@@ -19,11 +19,16 @@ public class HigherOrderFunction {
         System.out.println(specialFunction(arr, (a,b) -> a * b , 10));
         System.out.println(specialFunction(arr, Integer::sum, 1));
 
+        Function<Integer, Function<Integer, Function<Integer, Integer>>>
+                currying = firstFunction -> secondFunction -> thirdFunction ->
+                (firstFunction + 10) + (secondFunction * 2) * thirdFunction;
+        int result = currying.apply(30).apply(40).apply(2);
+        System.out.println(result);
+
 
 
 
 //        Functional Composition
-
         Predicate<String> startsWithA = (text) -> text.startsWith("A");
         Predicate<String> endsWithX = (text) -> text.endsWith("x");
         Predicate<String> composed = startsWithA.and(endsWithX);

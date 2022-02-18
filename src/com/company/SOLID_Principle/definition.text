@@ -1,0 +1,38 @@
+BELOW ARE THE DEFINITIONS OF THE SOLID PRINCIPLES
+
+THE PRINCIPLE STANDS FOR THE FOLLOWING ACRONYM BELOW
+
+1. SINGLE RESPONSIBILITY PRINCIPLE
+2. OPEN OR CLOSED PRINCIPLE
+3. LISKOV SUBSTITUTION PRINCIPLE
+4. INTERFACE SEGREGATION PRINCIPLE
+5. DEPENDENCY INVERSION PRINCIPLE
+
+                        SINGLE RESPONSIBILITY PRINCIPLE
+A class should have only one reason to change OR should only a single responsibility
+
+
+                        OPEN OR CLOSED PRINCIPLE
+A class should be opened for extension but closed to modification.
+
+
+                        LISKOV SUBSTITUTION PRINCIPLE
+Subclasses (derived classes) should be completely substitutable for their super class (es).
+
+
+                        INTERFACE SEGREGATION PRINCIPLE
+A client should never be forced to implement an interface it does not use or need.
+
+
+
+                        DEPENDENCY INVERSION PRINCIPLE
+Use abstraction instead of concrete implementations (abstract classes or interfaces)
+High level modules should not depend on low level modules instead should depend on abstraction
+(but both should depend on their abstraction).
+
+
+
+
+
+
+

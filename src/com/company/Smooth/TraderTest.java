@@ -27,8 +27,8 @@ class TraderTest {
     @org.junit.jupiter.api.Test
     void makeWithdrawal() {
       Assertions.assertAll(
-              ()->  assertFalse(this.underTest.makeWithdrawal(200)),
-              ()->  assertTrue(this.underTest.makeWithdrawal(19))
+              () ->  assertFalse(this.underTest.makeWithdrawal(200)),
+              () ->  assertTrue(this.underTest.makeWithdrawal(19))
       );
     }
 

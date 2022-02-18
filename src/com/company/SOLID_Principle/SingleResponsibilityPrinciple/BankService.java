@@ -1,6 +1,6 @@
 package com.company.SOLID_Principle.SingleResponsibilityPrinciple;
 
-public class BankService {
+public class BankService{
 
     public long makeDeposit(long amount, String accountNo){
         return 0;
