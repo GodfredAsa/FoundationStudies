@@ -16,7 +16,7 @@ public class ShoppingMall {
 
     public static void main(String[] args) {
 
-//        shopping with card this makes the hides the type of card implementation
+//      shopping with card this makes the hides the type of card implementation
         BankCard creditCard = new CreditCard();
         ShoppingMall shoppingMall = new ShoppingMall(creditCard);
         shoppingMall.doPurchaseSomething(5000);
