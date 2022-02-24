@@ -18,6 +18,22 @@ public class Main {
 
         System.out.println("-----------------------------------------------");
 
+        /**
+        String mainString = "123456789";
+        char[] charString = mainString.toCharArray();
+        StringBuilder sbf = new StringBuilder();
+        int counter = charString.length ;
+        System.out.println(counter);
+        for (int i = 0; i < charString.length ; i++) {
+           counter--;
+           sbf.append(charString[counter]);
+        }
+        System.out.println(sbf.toString());
+
+         */
+
+
+
 
         System.out.println("white spaces with underscore".replaceAll("\\s", "_"));
 
@@ -130,7 +146,8 @@ public class Main {
 
     private static void getValidEmails(List<String> emails) {
         emails.stream()
-                .filter(email -> email.matches("[a-z]{2,15}\\.[a-z]{2,30}[\\@]turntabl.io"))
+                .filter( email -> email.matches("[a-z]{2,15}\\.[a-z]{2,30}[\\@]turntabl.io") ||
+                                 email.matches("[a-z]{2,15}\\.[a-z]{2,30}[\\@]gmail.com") )
                 .sorted()
                 .forEach(System.out::println);
     }

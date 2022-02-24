@@ -21,9 +21,6 @@ public class ShoppingMall {
         ShoppingMall shoppingMall = new ShoppingMall(creditCard);
         shoppingMall.doPurchaseSomething(5000);
 
-
-
-
         BankCard debitCard = new DebitCard();
         ShoppingMall shoppingMall1 = new ShoppingMall(debitCard);
 
