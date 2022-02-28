@@ -9,10 +9,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Main {
+public class Regex {
 
     public static void main(String[] args) {
 
+        String phoneNumber2 = "0244123123";
+        System.out.println( "new phone number: " + phoneNumber2.replaceAll("[^123]", "abc"));
 
         getValidEmails(getEmails());
 
@@ -36,8 +38,8 @@ public class Main {
 
 
         System.out.println("white spaces with underscore".replaceAll("\\s", "_"));
-
-        System.out.println("abcd.135 " + "abcd.135".matches("^[a-z]+[\\.][0-9]+$"));
+// 3 letters followed dot followed 3 numbers eg abc.134
+        System.out.println("abcd.135 " + "abc.135".matches("^[a-z]{3}+[\\.][0-9]{3}+$"));
 
         System.out.println("regular expression: " + "(123) 456-7890".matches("^([\\(][0-9]{3}[\\)][ ][0-9]{3}[\\-][0-9]{4})"));
 
@@ -47,9 +49,11 @@ public class Main {
         System.out.println("godfred_epals.com => " + "godfred_epals.com".matches("^([a-z]{2,30}[\\@][a-z]{2,30}[\\.][a-z]{2,5})"));
 
         String turntablEmail = "godfred.asamoah@turntabl.io";
+//
+        System.out.println(turntablEmail + ": " + turntablEmail.matches("^([a-z]{2,15}[\\.][a-z]{2,15}[\\@]turntabl.io)$"));
 
-        System.out.println(turntablEmail + ": " + turntablEmail.matches("^([a-z]{2,15}[\\.][a-z]{2,15}[\\@]turntabl.io)"));
-
+        System.out.println("golden.heroe1@gmail.com" + ": " + "golden.heroe1@gmail.com".matches("^([a-z]{2,15}[\\.][a-z]{2,15}[\\@]turntabl.io)$"));
+//
         String phoneNumber = "0548670632";
         String alteredPhoneNumber = phoneNumber.replaceAll("[^632]", "#"); // changes everything except 6, 3, and 2
         System.out.println(alteredPhoneNumber);
@@ -63,8 +67,8 @@ public class Main {
         System.out.println("Replace all numbers in a string: " + string.replaceAll("[0-9]", "#"));
         System.out.println("Replace all letters in a string: " + string.replaceAll("(?i)[a-z]", "#"));
         System.out.println("Replace all letters in a string: " + string.replaceAll("[A-Za-z]", "#"));
-
-
+//
+//
         System.out.println(repplaceLettersWithX("I have 3 beautiful apples with mine 7 girlFriends"));
 
         StringBuilder htmlText = new StringBuilder("<h1>My Heading</h1>");
@@ -116,7 +120,7 @@ public class Main {
         String tvTest = "tstvtkt";
 
         String tNotVRegex = "t(?!v)"; // whether there is a letter after the last t or not still considers it
-//        String tNotVRegex = "t[^v]"; // only considers if there is a letter after the  last t letter
+        //String tNotVRegex = "t[^v]"; // only considers if there is a letter after the  last t letter
 
         Pattern tNotVPattern = Pattern.compile(tNotVRegex);
         Matcher tNotVMatcher = tNotVPattern.matcher(tvTest);
@@ -146,8 +150,8 @@ public class Main {
 
     private static void getValidEmails(List<String> emails) {
         emails.stream()
-                .filter( email -> email.matches("[a-z]{2,15}\\.[a-z]{2,30}[\\@]turntabl.io") ||
-                                 email.matches("[a-z]{2,15}\\.[a-z]{2,30}[\\@]gmail.com") )
+                .filter( email -> email.matches("[a-z]{2,15}\\.[a-z]{2,30}[\\@]turntabl.io$") ||
+                                 email.matches("[a-z]{2,15}\\.[a-z]{2,30}[\\@]gmail.com$") )
                 .sorted()
                 .forEach(System.out::println);
     }
