@@ -1,7 +1,5 @@
 package com.company.BehaviourParametization;
 
-
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -56,10 +54,8 @@ public class FB03BehaviourParameterization {
                         int result = random.nextInt(100);
                         return result % 2 == 0 ? "even number"  :  "odd number";
         };
-
         System.out.println( "supplier method = " + returnEvenOrOdd.get());
         System.out.println( "test is running: " + createListTest(numbers, t-> t * 10));
-
     }
 
     private static List<Integer> createListTest(List<Integer> testNumbers, Function<Integer, Integer> testFunc){
@@ -108,7 +104,6 @@ public class FB03BehaviourParameterization {
                 .map(function) // function here
                 .sorted(Comparator.reverseOrder())
                 .collect(Collectors.toList());
-
     }
 
 //    Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
