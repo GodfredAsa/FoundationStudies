@@ -12,14 +12,14 @@ public class FilesFP {
 
         Files.lines(Paths.get("file.txt"))
                 .map(String::toUpperCase)
-                .filter(word->word.length()>20)
+                .filter(word->word.length() > 20)
                 .sorted(Comparator.comparing(String::length).reversed())
                 .forEach(System.out::println);
 
 
         
 //        paths in the root of the project
-        Files.list(Paths.get("."))
+        Files.list(Paths.get("./src/com/company"))
                 .filter(Files::isDirectory)
                 .forEach(System.out::println);
     }

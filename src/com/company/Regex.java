@@ -1,8 +1,7 @@
 package com.company;
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
@@ -12,7 +11,7 @@ import java.util.stream.Collectors;
 public class Regex {
 
     public static void main(String[] args) {
-
+        System.out.println(Pattern.matches("a*b\\d*", "aaaaab12")); // a followed by many b's then followed by many numbers
         String phoneNumber2 = "0244123123";
         System.out.println( "new phone number: " + phoneNumber2.replaceAll("[^123]", "abc"));
 
@@ -65,7 +64,7 @@ public class Regex {
         System.out.println(string.replaceAll("(?i)[a-f3-8]", "X"));
 
         System.out.println("Replace all numbers in a string: " + string.replaceAll("[0-9]", "#"));
-        System.out.println("Replace all letters in a string: " + string.replaceAll("(?i)[a-z]", "#"));
+        System.out.println("Replace all letters in a string =>>: " + string.replaceAll("(?i)[a-z]", "#"));
         System.out.println("Replace all letters in a string: " + string.replaceAll("[A-Za-z]", "#"));
 //
 //
@@ -112,7 +111,6 @@ public class Regex {
         Matcher h2TextMatcher = h2TextPattern.matcher(htmlText);
 
         while (h2TextMatcher.find()) {
-            ;
             System.out.println(h2TextMatcher.group(2));
         }
 
@@ -160,7 +158,7 @@ public class Regex {
 
         return Arrays.stream(str.trim().split(" "))
                 .map(letter -> letter.replaceAll("(?i)[a-z]", "X"))
-//              .map(numbers -> numbers.replaceAll("\\d", "#")) // replace numbers with #
+              .map(numbers -> numbers.replaceAll("\\d", "#")) // replace numbers with #
                 .collect(Collectors.joining(" "));
 
     }

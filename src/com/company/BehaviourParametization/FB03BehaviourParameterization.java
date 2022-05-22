@@ -120,8 +120,4 @@ public class FB03BehaviourParameterization {
     public static int getFactorial(int number){
         return number <= 1 ? 1: number * getFactorial(number -1 );
     }
-
-
-
-
 }
