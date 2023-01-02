@@ -34,9 +34,9 @@ High level modules should not depend on low level modules instead should depend 
 
 SOLID PRINCIPLES
 
-Robert C. Martin introduced the SOLID principles in his paper "Design Principles and Design Patterns" in 2000. Michael Feathers, who introduced us to the SOLID acronym, expanded on these ideas later. These five principles have revolutionized the world of object-oriented programming over the last 20 years, changing the way we write software.
-
-
+Robert C. Martin introduced the SOLID principles in his paper "Design Principles and Design Patterns" in 2000.
+Michael Feathers, who introduced us to the SOLID acronym, expanded on these ideas later. These five principles have
+revolutionized the world of object-oriented programming over the last 20 years, changing the way we write software.
 
 Below are the 5 principles
 ●	Single Responsibility
