@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 public class Regex {
 
     public static void main(String[] args) {
+
+     getName(List.of("bintu.iddi@turntabl.io", "isaac.bokye-manu@turntabl.io"));
         System.out.println(Pattern.matches("a*b\\d*", "aaaaab12")); // a followed by many b's then followed by many numbers
         String phoneNumber2 = "0244123123";
         System.out.println( "new phone number: " + phoneNumber2.replaceAll("[^123]", "abc"));
@@ -18,23 +20,6 @@ public class Regex {
         getValidEmails(getEmails());
 
         System.out.println("-----------------------------------------------");
-
-        /**
-        String mainString = "123456789";
-        char[] charString = mainString.toCharArray();
-        StringBuilder sbf = new StringBuilder();
-        int counter = charString.length ;
-        System.out.println(counter);
-        for (int i = 0; i < charString.length ; i++) {
-           counter--;
-           sbf.append(charString[counter]);
-        }
-        System.out.println(sbf.toString());
-
-         */
-
-
-
 
         System.out.println("white spaces with underscore".replaceAll("\\s", "_"));
 // 3 letters followed dot followed 3 numbers eg abc.134
@@ -66,8 +51,7 @@ public class Regex {
         System.out.println("Replace all numbers in a string: " + string.replaceAll("[0-9]", "#"));
         System.out.println("Replace all letters in a string =>>: " + string.replaceAll("(?i)[a-z]", "#"));
         System.out.println("Replace all letters in a string: " + string.replaceAll("[A-Za-z]", "#"));
-//
-//
+
         System.out.println(repplaceLettersWithX("I have 3 beautiful apples with mine 7 girlFriends"));
 
         StringBuilder htmlText = new StringBuilder("<h1>My Heading</h1>");
@@ -82,15 +66,12 @@ public class Regex {
         Matcher matcher = pattern.matcher(htmlText);
         System.out.println(matcher.matches());
 
-
         int count = 0;
         matcher.reset();
-
         while (matcher.find()) {
             count++;
             System.out.println("occurence " + count + " start: " + matcher.start() + " ends " + matcher.end());
         }
-
 
         String h2GroupPattern = "(<h2>.*?</h2>)";
         Pattern groupPattern = Pattern.compile(h2GroupPattern);
@@ -128,14 +109,21 @@ public class Regex {
         }
 
 
-        String exctractNumberPairs = "{0,2},{0,5},{1,3},{2,4},{x,y},{12,41}";
-        Pattern patternNumberPairs = Pattern.compile("\\{(\\d+,\\d+)\\}");
+        String exctractNumberPairs = "isaac.boakye-manu@turntabl.io";
+        Pattern patternNumberPairs = Pattern.compile("[a-z]{2,30}[\\.][a-z]{2,40}|[\\-][a-z]{2,40}[\\@]");
         Matcher matcherNumberPairs = patternNumberPairs.matcher(exctractNumberPairs);
         while (matcherNumberPairs.find()) {
-            System.out.println("Number pair occurrence: " + matcherNumberPairs.group(1));
+            System.out.println("NAMES: " + matcherNumberPairs.group(0).substring(0, matcherNumberPairs.group(0).length()-1));
         }
-    }
 
+
+//        String exctractNumberPairs = "{0,2},{0,5},{1,3},{2,4},{x,y},{12,41}";
+//        Pattern patternNumberPairs = Pattern.compile("\\{(\\d+,\\d+)\\}");
+//        Matcher matcherNumberPairs = patternNumberPairs.matcher(exctractNumberPairs);
+//        while (matcherNumberPairs.find()) {
+//            System.out.println("Number pair occurrence: " + matcherNumberPairs.group(1));
+//        }
+    }
 
     private static List<String> getEmails() {
         return Arrays.asList(
@@ -161,6 +149,24 @@ public class Regex {
               .map(numbers -> numbers.replaceAll("\\d", "#")) // replace numbers with #
                 .collect(Collectors.joining(" "));
 
+    }
+
+
+    private static String getName(List<String> emails){
+        String fname = "";
+        String lastname = "";
+
+       List<String> names  = emails.stream()
+               .map(e -> e.replaceAll("@turntabl.io", ""))
+               .collect(Collectors.toList());
+        for (String e: names) {
+            fname =  e.split("\\.")[0];
+            lastname =  e.split("\\.")[1];
+            fname = fname.substring(0,1).toUpperCase() + fname.substring(1,fname.length());
+            lastname = lastname.substring(0,1).toUpperCase() + lastname.substring(1,lastname.length());
+        }
+
+        return fname + " " + lastname;
     }
 
 //
@@ -194,7 +200,6 @@ public class Regex {
 //            System.out.println(number + " not a prime number ");
 //        } else System.out.println(number + " is a prime number");
 //    }
-
 }
 
 

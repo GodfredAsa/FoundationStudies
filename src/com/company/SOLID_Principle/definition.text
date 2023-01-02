@@ -32,6 +32,62 @@ High level modules should not depend on low level modules instead should depend 
 
 
 
+SOLID PRINCIPLES
+
+Robert C. Martin introduced the SOLID principles in his paper "Design Principles and Design Patterns" in 2000. Michael Feathers, who introduced us to the SOLID acronym, expanded on these ideas later. These five principles have revolutionized the world of object-oriented programming over the last 20 years, changing the way we write software.
+
+
+
+Below are the 5 principles
+●	Single Responsibility
+●	Open/Closed
+●	Liskov Substitution
+●	Interface Segregation
+●	Dependency Inversion
+
+Single Responsibility Principle
+The single responsibility principle states that a class should have only a single reason to change throughout its
+lifetime. This principle ensures that a class exists only for a single reason but can have multiple methods to carry
+out distinct functions. Or every java class must perform a single functionality as implementation of multiple
+functionalities mashup the code. Example in a car manufacturing company, the car manufacturer should handle only car
+logic, paint manufacturer should also handle paint making logic and stores should also handle storage logic.
+
+Open or Close Principle
+Classes should be open for extension but close for modification. By doing so, we prevent ourselves from modifying
+existing code and potentially introducing new bugs into an otherwise stable application. Assuming a class sorts
+elements in ascending order and one is asked to implement descending order in the same code base with this concept
+the working code is not modified but extended to include sorting in both ascending and descending.
+
+Liskov Substitution Principle
+It applies to inheritance which states that derived classes should be completely substitutable with their base classes.
+This implies that if class A is a subtype of class B then we should be able to replace B with A without interrupting
+the behavior of the program. In order words the principle states that if a section of your code extends a superclass,
+then all subclasses should be able to replace the superclass in your code. As long as it is a superclass’ subclass, a
+section of your code does not need to know which class it is.
+
+Interface Segregation Principle
+Larger interfaces should be divided into smaller interfaces. By doing so, we can ensure that implementing classes are
+only concerned with the methods that are relevant to them. Assuming there is an interface called Menu which has two
+methods serveVegetarianMeal and and serveNonVegetarianMeal if Restaurant ABC implements Menu it has to override the two
+methods of the interface and this violates the interface segregation principle if ABC does not serve both meals.
+The correction is to split the Menu interface into two parts which could be VegMenu and NonVegMenu then ABC can
+implement the interface it needs its method rather than having to force it implement a method it will not need.
+Also if XYZ serves both meals then it can implement both interfaces and override their methods so it can serve both
+meals.
+
+Dependency Inversion Principle
+The principle states that we must use abstraction (interfaces and abstract classes) instead of concrete class
+implementations. It also means that high level modules should not depend on low level modules but both should depend
+on the abstractions.
+In a shopping mall for instance, instead of the mall having all the cards used for shopping
+which means if another card is to be introduced or a card changes it behavior one has to go through all the code
+base and make the changes every but if a cardInterface is introduced and each card implements the interface and
+the shoppingMall has the interface then the mall would not have to keep all cards with in it but rather the interface
+and when a new card is introduce
+
+
+
+
 
 
 
