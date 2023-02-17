@@ -84,11 +84,3 @@ which means if another card is to be introduced or a card changes it behavior on
 base and make the changes every but if a cardInterface is introduced and each card implements the interface and
 the shoppingMall has the interface then the mall would not have to keep all cards with in it but rather the interface
 and when a new card is introduce
-
-
-
-
-
-
-
-

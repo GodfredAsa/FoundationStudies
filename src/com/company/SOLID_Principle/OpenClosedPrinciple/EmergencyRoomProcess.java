@@ -12,13 +12,10 @@ public class EmergencyRoomProcess {
         Employee susan = new Doctor(1,"Susan Holmes", "Emergency", true);
         ERDirector.callEmployees(susan);
 
+        System.out.println(" -------------------------------------------------------------------- ");
 
         Employee judith  = new Pilot(1,"Judith Ofosu", "Airport", true);
 
         ERDirector.callEmployees(judith);
     }
-
-
-
-
 }
